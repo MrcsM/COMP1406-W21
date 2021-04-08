@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Base class for all products the store will sell
-public abstract class Product{
+public abstract class Product implements Serializable {
  private double price;
  private int stockQuantity;
  private int soldQuantity;

@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Abstract class capturing shared state between Fridge and ToasterOven
-public abstract class Appliance extends Product{
+public abstract class Appliance extends Product {
   private int wattage;
   private String color;
   private String brand;

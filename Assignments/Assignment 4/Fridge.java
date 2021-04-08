@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Class representing a single type of Fridge
-public class Fridge extends Appliance{
+public class Fridge extends Appliance implements Serializable {
   private double cubicFeet;
   private boolean hasFreezer;
   

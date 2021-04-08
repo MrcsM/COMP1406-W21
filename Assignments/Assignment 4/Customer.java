@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Customer {
+public class Customer implements Serializable {
 
     private String name;
     private double amountSpent;
@@ -27,6 +28,7 @@ public class Customer {
         for (Product key : productsPurchased.keySet()) {
             if (key == p) {
                 found = true;
+                break;
             } else {
                 found = false;
             }
@@ -37,7 +39,7 @@ public class Customer {
             int curAmount = productsPurchased.get(p);
             productsPurchased.put(p, curAmount + amount);
         }
-    } // Works as of 03/04/21
+    } // Worked as of 03/04/21 - Broken as of 07/04/21 - Works as of 08/04/21
 
     public void printPurchaseHistory() {
         for (Map.Entry me : productsPurchased.entrySet()) {

@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Class representing a single desktop computer
-public class Desktop extends Computer{
+public class Desktop extends Computer {
   private String towerProfile;
   
   public Desktop(double initPrice, int initQuantity, double initCPUSpeed, int initRAM, boolean initSSD, int initStorage, String initProfile){

@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Class representing a single laptop product
-public class Laptop extends Computer{
+public class Laptop extends Computer {
   private double screenSize;
   
   public Laptop(double initPrice, int initQuantity, double initCPUSpeed, int initRAM, boolean initSSD, int initStorage, double initScreen){

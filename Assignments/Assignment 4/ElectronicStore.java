@@ -1,8 +1,9 @@
 //Class representing an electronic store
 //Has an array of products that represent the items the store can sell
+import java.io.*;
 import java.util.*;
 
-public class ElectronicStore{
+public class ElectronicStore {
   private String name;
   private ArrayList<Product> stock;
   private ArrayList<Customer> customers;
@@ -11,10 +12,6 @@ public class ElectronicStore{
     name = initName;
     stock = new ArrayList<>();
     customers = new ArrayList<>();
-  }
-  
-  public String getName(){
-    return name;
   }
 
   public boolean addProduct(Product newProduct) {
@@ -141,12 +138,35 @@ public class ElectronicStore{
     return topXCustomers;
   } // Works as of 03/04/21
 
-  public boolean saveToFile(String filename) { // Needs to be worked on as of 03/04/21
-    return true;
-  }
+  public boolean saveToFile(String filename) {
+    try {
+      FileOutputStream fileOut = new FileOutputStream(filename);
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(this.name);
+      out.writeObject(this.stock);
+      out.writeObject(this.customers);
+      out.close();
+      fileOut.close();
+      return true;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return false;
+    }
+  } // Works as of 08/04/21
 
-  public static ElectronicStore loadFromFile(String filename) { // Needs to be worked on as of 03/04/21
-
-  }
-
+  public static ElectronicStore loadFromFile(String filename) {
+    ElectronicStore store = new ElectronicStore("null");
+    try {
+      FileInputStream fileIn = new FileInputStream(filename);
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      store.name = (String) in.readObject();
+      store.stock = (ArrayList<Product>) in.readObject();
+      store.customers = (ArrayList<Customer>) in.readObject();
+      in.close();
+      fileIn.close();
+    } catch (IOException | ClassNotFoundException e) {
+      return null;
+    }
+    return store;
+  } // Works as of 08/04/21
 } 

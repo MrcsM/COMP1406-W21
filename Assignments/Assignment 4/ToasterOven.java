@@ -1,5 +1,7 @@
+import java.io.Serializable;
+
 //Class representing a single toaster oven product
-public class ToasterOven extends Appliance{
+public class ToasterOven extends Appliance {
   private int width;
   private boolean convection;
   
